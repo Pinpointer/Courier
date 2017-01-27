@@ -205,7 +205,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         if(location.distanceTo(mCurrentLocation)>9 && mRequestingLocationUpdates) {
             mCurrentLocation = location;
             Log.d("Update", Double.toString(location.getLatitude()));
-            updateLine();
         }
     }
 
@@ -219,16 +218,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-    //adds polyline to map
-    private void updateLine(){
-        if(!points.isEmpty()) {
-            Polyline line = mMap.addPolyline(new PolylineOptions()
-                    .add(points.get(points.size() - 1))
-                    .add(new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude()))
-                    .width(10)
-                    .color(Color.RED));
-        }
-    }
 
     private ArrayList<LatLng> getPoints(String code){
         /*
@@ -254,6 +243,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 TextView codetext = (TextView)findViewById(R.id.pincode_text);
                 codetext.setText("Pinpointer Code: "+code);
                 mRequestingLocationUpdates = true;
+                //SERVER
+                new retrieveItems(mMap).execute(code);
+
                 startLocationUpdates();
                 Toast.makeText(MainActivity.this, "Walk to the Delivery Location", Toast.LENGTH_LONG).show();
                 arrival_button.setVisibility(View.VISIBLE);

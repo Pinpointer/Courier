@@ -8,6 +8,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
 
     <application
@@ -15,10 +17,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:name="com.example.daniel.pinpointercourier.Application">
 
         <activity
-            android:name="com.example.daniel.com.example.daniel.pinpointercourier.Splash"
+            android:name="com.example.daniel.pinpointercourier.Splash"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,8 +30,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.daniel.com.example.daniel.pinpointercourier.MainActivity"/>
-        <activity android:name="com.example.daniel.com.example.daniel.pinpointercourier.FinishActivity"/>
+        <activity android:name="com.example.daniel.pinpointercourier.MainActivity"/>
+        <activity android:name="com.example.daniel.pinpointercourier.FinishActivity"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
